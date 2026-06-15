@@ -32,6 +32,68 @@
             padding: 40px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
+
+        .logo-area {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-icon i {
+            font-size: 32px;
+            color: white;
+        }
+
+        .logo-area h4 {
+            color: #1e3c72;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .logo-area p {
+            color: #888;
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .input-group-text {
+            background: #f0f4ff;
+            border: 1.5px solid #dce3f5;
+            color: #1e3c72;
+        }
+
+        .form-control {
+            border: 1.5px solid #dce3f5;
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .form-control:focus {
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+        }
+
+        .input-group .input-group-text {
+            border-radius: 8px 0 0 8px;
+        }
     </style>
 </head>
 <body>
