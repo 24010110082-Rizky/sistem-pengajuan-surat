@@ -10,4 +10,16 @@ class User_model extends CI_Model {
         parent::__construct();
         $this->load->database();
     }
+
+    public function login($username, $password)
+    {
+        $this->db->select('users.*, roles.name as role_name');
+        $this->db->from($this->table);
+        $this->db->join('roles', 'roles.id = users.role_id');
+        $this->db->where('users.username', $username);
+        $this->db->where('users.password', md5($password));
+        $this->db->where('users.status', 'aktif');
+        $query = $this->db->get();
+        return $query->row();
+    }
 }
