@@ -28,4 +28,9 @@ class User_model extends CI_Model {
         $this->db->where('role_id', 2);
         return $this->db->get($this->table)->result();
     }
+
+    public function get_by_id($id)
+    {
+        return $this->db->get_where($this->table, ['id' => $id])->row();
+    }
 }
