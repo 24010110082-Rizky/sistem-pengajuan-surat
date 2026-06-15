@@ -55,3 +55,17 @@ INSERT INTO `jenis_surat` (`nama_surat`, `deskripsi`, `status`) VALUES
 ('Surat Rekomendasi', 'Surat rekomendasi dari kampus untuk keperluan beasiswa atau magang', 'aktif'),
 ('Surat Izin Penelitian', 'Surat izin untuk melakukan penelitian di instansi tertentu', 'aktif'),
 ('Surat Keterangan Lulus', 'Surat keterangan telah menyelesaikan studi di Universitas Bumigora', 'aktif');
+
+CREATE TABLE `pengajuan` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `jenis_surat_id` INT(11) NOT NULL,
+  `keperluan` TEXT NOT NULL,
+  `tanggal_ajuan` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `status` ENUM('menunggu', 'diproses', 'selesai', 'ditolak') NOT NULL DEFAULT 'menunggu',
+  `catatan_admin` TEXT DEFAULT NULL,
+  `tgl_selesai` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`jenis_surat_id`) REFERENCES `jenis_surat`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
