@@ -1,0 +1,5 @@
+-- ============================================
+-- DATABASE: sistem_pengajuan_surat
+-- Sistem Pengajuan Surat Mahasiswa
+-- Universitas Bumigora 2026
+-- ============================================
