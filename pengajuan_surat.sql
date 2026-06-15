@@ -39,3 +39,12 @@ INSERT INTO `users` (`username`, `password`, `role_id`, `name`, `nim`, `email`, 
 ('rizky', MD5('mahasiswa123'), 2, 'Rizky Ramadhan', '24010110082', 'rizky@student.ubg.ac.id', 'aktif'),
 ('dewa', MD5('mahasiswa123'), 2, 'I Dewa Gde Dannyswara', '24010110069', 'dewa@student.ubg.ac.id', 'aktif'),
 ('ikbal', MD5('mahasiswa123'), 2, 'Muhammad Ikbal', '24010110074', 'ikbal@student.ubg.ac.id', 'aktif');
+
+CREATE TABLE `jenis_surat` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nama_surat` VARCHAR(150) NOT NULL,
+  `deskripsi` TEXT DEFAULT NULL,
+  `status` ENUM('aktif', 'nonaktif') NOT NULL DEFAULT 'aktif',
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
