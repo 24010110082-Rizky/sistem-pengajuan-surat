@@ -33,4 +33,12 @@ class User_model extends CI_Model {
     {
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
+
+    public function tambah($data)
+    {
+        $data['password'] = md5($data['password']);
+        $data['role_id']  = 2;
+        $data['status']   = 'aktif';
+        return $this->db->insert($this->table, $data);
+    }
 }
