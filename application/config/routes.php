@@ -25,3 +25,9 @@ $route['admin/jenis-surat/tambah']       = 'Admin/tambah_jenis_surat';
 $route['admin/jenis-surat/simpan']       = 'Admin/simpan_jenis_surat';
 $route['admin/jenis-surat/edit/(:num)']  = 'Admin/edit_jenis_surat/$1';
 $route['admin/jenis-surat/hapus/(:num)'] = 'Admin/hapus_jenis_surat/$1';
+
+$route['admin/mahasiswa']              = 'Admin/mahasiswa';
+$route['admin/mahasiswa/tambah']       = 'Admin/tambah_mahasiswa';
+$route['admin/mahasiswa/simpan']       = 'Admin/simpan_mahasiswa';
+$route['admin/mahasiswa/edit/(:num)']  = 'Admin/edit_mahasiswa/$1';
+$route['admin/mahasiswa/hapus/(:num)'] = 'Admin/hapus_mahasiswa/$1';
