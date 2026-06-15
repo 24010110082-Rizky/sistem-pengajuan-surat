@@ -162,7 +162,23 @@
                 <?= $this->session->flashdata('error') ?>
             </div>
         <?php endif; ?>
-        
+
+        <?= form_open('Auth/proses_login') ?>
+
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                    <input type="text"
+                           name="username"
+                           class="form-control"
+                           placeholder="Masukkan username"
+                           value="<?= set_value('username') ?>"
+                           required>
+                </div>
+            </div>
+        <?= form_close() ?>
+
     </div>
 </div>
 
