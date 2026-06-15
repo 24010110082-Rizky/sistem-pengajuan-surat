@@ -9,3 +9,9 @@ $route['login']  = 'Auth/index';
 $route['logout'] = 'Auth/logout';
 
 $route['dashboard'] = 'Dashboard/index';
+
+$route['pengajuan']             = 'Pengajuan/index';
+$route['pengajuan/buat']        = 'Pengajuan/buat';
+$route['pengajuan/simpan']      = 'Pengajuan/simpan';
+$route['pengajuan/riwayat']     = 'Pengajuan/riwayat';
+$route['pengajuan/detail/(:num)'] = 'Pengajuan/detail/$1';
