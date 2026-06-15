@@ -24,6 +24,8 @@ class Dashboard extends CI_Controller {
             $data['diproses']       = $this->Pengajuan_model->count_by_status('diproses');
             $data['selesai']        = $this->Pengajuan_model->count_by_status('selesai');
             $data['ditolak']        = $this->Pengajuan_model->count_by_status('ditolak');
+            $data['pengajuan_baru'] = $this->Pengajuan_model->get_all();
+            $this->load->view('admin/dashboard', $data);
         } else {
             redirect('pengajuan');
         }
