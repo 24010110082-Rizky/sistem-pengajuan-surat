@@ -33,3 +33,9 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (`role_id`) REFERENCES `roles`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `users` (`username`, `password`, `role_id`, `name`, `nim`, `email`, `status`) VALUES
+('admin', MD5('admin123'), 1, 'Administrator', NULL, 'admin@ubg.ac.id', 'aktif'),
+('rizky', MD5('mahasiswa123'), 2, 'Rizky Ramadhan', '24010110082', 'rizky@student.ubg.ac.id', 'aktif'),
+('dewa', MD5('mahasiswa123'), 2, 'I Dewa Gde Dannyswara', '24010110069', 'dewa@student.ubg.ac.id', 'aktif'),
+('ikbal', MD5('mahasiswa123'), 2, 'Muhammad Ikbal', '24010110074', 'ikbal@student.ubg.ac.id', 'aktif');
