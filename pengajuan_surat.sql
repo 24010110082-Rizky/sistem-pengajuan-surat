@@ -69,3 +69,9 @@ CREATE TABLE `pengajuan` (
   FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
   FOREIGN KEY (`jenis_surat_id`) REFERENCES `jenis_surat`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `pengajuan` (`user_id`, `jenis_surat_id`, `keperluan`, `status`, `catatan_admin`, `tgl_selesai`) VALUES
+(2, 1, 'Keperluan melamar beasiswa PPA semester genap 2025/2026', 'selesai', 'Surat sudah selesai diproses dan dapat diambil di TU', '2026-01-15 10:00:00'),
+(2, 3, 'Keperluan pendaftaran magang di PT. Telkom Indonesia', 'diproses', 'Sedang dalam proses penandatanganan', NULL),
+(3, 1, 'Keperluan pembuatan KTP baru', 'menunggu', NULL, NULL),
+(4, 2, 'Keperluan pembukaan rekening bank BRI', 'menunggu', NULL, NULL);
