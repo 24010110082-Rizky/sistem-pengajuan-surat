@@ -94,6 +94,54 @@
         .input-group .input-group-text {
             border-radius: 8px 0 0 8px;
         }
+
+        .btn-login {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 60, 114, 0.4);
+            color: white;
+        }
+
+        .alert-danger {
+            border-radius: 10px;
+            font-size: 13px;
+            border: none;
+            background: #fff0f0;
+            color: #c0392b;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 25px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        .toggle-password {
+            cursor: pointer;
+            border: 1.5px solid #dce3f5;
+            border-left: none;
+            background: #f0f4ff;
+            border-radius: 0 8px 8px 0;
+            padding: 0 12px;
+            color: #1e3c72;
+        }
+
+        .toggle-password:hover {
+            background: #e0e8ff;
+        }
     </style>
 </head>
 <body>
