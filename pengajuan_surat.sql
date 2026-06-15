@@ -19,3 +19,17 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`) VALUES
 (1, 'admin'),
 (2, 'mahasiswa');
+
+CREATE TABLE `users` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(100) NOT NULL UNIQUE,
+  `password` VARCHAR(255) NOT NULL,
+  `role_id` INT(11) NOT NULL,
+  `name` VARCHAR(150) NOT NULL,
+  `nim` VARCHAR(20) DEFAULT NULL,
+  `email` VARCHAR(150) DEFAULT NULL,
+  `status` ENUM('aktif', 'nonaktif') NOT NULL DEFAULT 'aktif',
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`role_id`) REFERENCES `roles`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
