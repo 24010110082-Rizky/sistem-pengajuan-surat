@@ -22,4 +22,10 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->row();
     }
+
+    public function get_all_mahasiswa()
+    {
+        $this->db->where('role_id', 2);
+        return $this->db->get($this->table)->result();
+    }
 }
