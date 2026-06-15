@@ -48,3 +48,10 @@ CREATE TABLE `jenis_surat` (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `jenis_surat` (`nama_surat`, `deskripsi`, `status`) VALUES
+('Surat Keterangan Aktif Kuliah', 'Surat yang menerangkan bahwa mahasiswa masih aktif kuliah di Universitas Bumigora', 'aktif'),
+('Surat Keterangan Mahasiswa', 'Surat keterangan umum sebagai mahasiswa Universitas Bumigora', 'aktif'),
+('Surat Rekomendasi', 'Surat rekomendasi dari kampus untuk keperluan beasiswa atau magang', 'aktif'),
+('Surat Izin Penelitian', 'Surat izin untuk melakukan penelitian di instansi tertentu', 'aktif'),
+('Surat Keterangan Lulus', 'Surat keterangan telah menyelesaikan studi di Universitas Bumigora', 'aktif');
