@@ -19,3 +19,9 @@ $route['pengajuan/detail/(:num)'] = 'Pengajuan/detail/$1';
 $route['admin/pengajuan']               = 'Admin/pengajuan';
 $route['admin/pengajuan/detail/(:num)'] = 'Admin/detail_pengajuan/$1';
 $route['admin/pengajuan/update/(:num)'] = 'Admin/update_pengajuan/$1';
+
+$route['admin/jenis-surat']              = 'Admin/jenis_surat';
+$route['admin/jenis-surat/tambah']       = 'Admin/tambah_jenis_surat';
+$route['admin/jenis-surat/simpan']       = 'Admin/simpan_jenis_surat';
+$route['admin/jenis-surat/edit/(:num)']  = 'Admin/edit_jenis_surat/$1';
+$route['admin/jenis-surat/hapus/(:num)'] = 'Admin/hapus_jenis_surat/$1';
