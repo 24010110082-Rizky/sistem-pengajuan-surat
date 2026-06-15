@@ -155,6 +155,14 @@
             <h4>Sistem Pengajuan Surat</h4>
             <p>Universitas Bumigora</p>
         </div>
+
+        <?php if ($this->session->flashdata('error')): ?>
+            <div class="alert alert-danger d-flex align-items-center mb-3" role="alert">
+                <i class="bi bi-exclamation-circle-fill me-2"></i>
+                <?= $this->session->flashdata('error') ?>
+            </div>
+        <?php endif; ?>
+        
     </div>
 </div>
 
