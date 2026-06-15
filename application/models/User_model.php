@@ -41,4 +41,15 @@ class User_model extends CI_Model {
         $data['status']   = 'aktif';
         return $this->db->insert($this->table, $data);
     }
+
+    public function update($id, $data)
+    {
+        if (!empty($data['password'])) {
+            $data['password'] = md5($data['password']);
+        } else {
+            unset($data['password']);
+        }
+        $this->db->where('id', $id);
+        return $this->db->update($this->table, $data);
+    }
 }
