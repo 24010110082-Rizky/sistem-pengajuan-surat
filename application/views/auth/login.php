@@ -177,6 +177,23 @@
                            required>
                 </div>
             </div>
+
+            <div class="mb-4">
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                    <input type="password"
+                           name="password"
+                           id="password"
+                           class="form-control"
+                           placeholder="Masukkan password"
+                           required>
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <i class="bi bi-eye-fill" id="toggleIcon"></i>
+                    </button>
+                </div>
+            </div>
+            
         <?= form_close() ?>
 
     </div>
