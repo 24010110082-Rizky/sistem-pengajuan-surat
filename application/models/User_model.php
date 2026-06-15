@@ -57,4 +57,13 @@ class User_model extends CI_Model {
     {
         return $this->db->delete($this->table, ['id' => $id]);
     }
+
+    public function is_username_exist($username, $exclude_id = null)
+    {
+        $this->db->where('username', $username);
+        if ($exclude_id) {
+            $this->db->where('id !=', $exclude_id);
+        }
+        return $this->db->get($this->table)->num_rows() > 0;
+    }
 }
