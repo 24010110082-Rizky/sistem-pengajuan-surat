@@ -193,8 +193,16 @@
                     </button>
                 </div>
             </div>
-            
+
+            <button type="submit" class="btn-login">
+                <i class="bi bi-box-arrow-in-right me-2"></i>Masuk
+            </button>
+
         <?= form_close() ?>
+
+        <div class="footer-text">
+            &copy; 2026 Universitas Bumigora. All rights reserved.
+        </div>
 
     </div>
 </div>
