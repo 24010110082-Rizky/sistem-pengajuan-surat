@@ -146,5 +146,17 @@
 </head>
 <body>
 
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="logo-area">
+            <div class="logo-icon">
+                <i class="bi bi-envelope-paper-fill"></i>
+            </div>
+            <h4>Sistem Pengajuan Surat</h4>
+            <p>Universitas Bumigora</p>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
