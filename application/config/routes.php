@@ -31,3 +31,8 @@ $route['admin/mahasiswa/tambah']       = 'Admin/tambah_mahasiswa';
 $route['admin/mahasiswa/simpan']       = 'Admin/simpan_mahasiswa';
 $route['admin/mahasiswa/edit/(:num)']  = 'Admin/edit_mahasiswa/$1';
 $route['admin/mahasiswa/hapus/(:num)'] = 'Admin/hapus_mahasiswa/$1';
+
+$route['profil']        = 'Profil/index';
+$route['profil/update'] = 'Profil/update';
+
+$route['welcome'] = 'Welcome/index';
