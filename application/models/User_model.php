@@ -66,4 +66,15 @@ class User_model extends CI_Model {
         }
         return $this->db->get($this->table)->num_rows() > 0;
     }
+
+    public function update_profil($id, $data)
+    {
+        if (!empty($data['password'])) {
+            $data['password'] = md5($data['password']);
+        } else {
+            unset($data['password']);
+        }
+        $this->db->where('id', $id);
+        return $this->db->update($this->table, $data);
+    }
 }
