@@ -217,5 +217,19 @@
         </div>
     </div>
 
+    <div class="main-content">
+
+        <div class="topbar">
+            <h5><i class="bi bi-person-circle me-2"></i><?= $title ?></h5>
+            <div class="user-info">
+                <div class="user-avatar"><?= strtoupper(substr($this->session->userdata('name'), 0, 1)) ?></div>
+                <div>
+                    <div style="font-size:14px;font-weight:600;"><?= $this->session->userdata('name') ?></div>
+                    <div style="font-size:12px;color:#888;"><?= $this->session->userdata('nim') ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
