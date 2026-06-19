@@ -17,4 +17,12 @@ class Profil extends CI_Controller {
             redirect('dashboard');
         }
     }
+
+    public function index()
+    {
+        $user_id        = $this->session->userdata('user_id');
+        $data['title']  = 'Profil Saya';
+        $data['user']   = $this->User_model->get_by_id($user_id);
+        $this->load->view('profil/index', $data);
+    }
 }
