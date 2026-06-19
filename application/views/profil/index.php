@@ -204,5 +204,18 @@
 </head>
 <body>
     
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h5><i class="bi bi-envelope-paper-fill me-2"></i>Surat Mahasiswa</h5>
+            <p>Universitas Bumigora</p>
+        </div>
+        <div class="sidebar-menu">
+            <a href="<?= site_url('pengajuan') ?>"><i class="bi bi-clock-history"></i> Riwayat Pengajuan</a>
+            <a href="<?= site_url('pengajuan/buat') ?>"><i class="bi bi-plus-circle"></i> Ajukan Surat</a>
+            <a href="<?= site_url('profil') ?>" class="active"><i class="bi bi-person-circle"></i> Profil Saya</a>
+            <a href="<?= site_url('logout') ?>"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </div>
+    </div>
+
 </body>
 </html>
