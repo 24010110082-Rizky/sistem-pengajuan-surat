@@ -136,6 +136,70 @@
             padding: 10px 25px;
             font-weight: 600;
         }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Avatar besar di profil */
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 40px;
+            margin: 0 auto 15px;
+            box-shadow: 0 5px 20px rgba(30, 60, 114, 0.3);
+        }
+
+        .profile-info {
+            text-align: center;
+            padding: 25px;
+            border-bottom: 1px solid #f0f4ff;
+        }
+
+        .profile-info h5 {
+            font-weight: 700;
+            color: #1e3c72;
+            margin: 0;
+        }
+
+        .profile-info p {
+            color: #888;
+            font-size: 13px;
+            margin: 5px 0 0;
+        }
+
+        .profile-badge {
+            background: #f0f4ff;
+            color: #1e3c72;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
