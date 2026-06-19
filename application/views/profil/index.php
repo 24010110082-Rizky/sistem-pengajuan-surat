@@ -69,6 +69,73 @@
         .sidebar-menu a i {
             font-size: 18px;
         }
+
+        .main-content {
+            margin-left: 260px;
+            padding: 30px;
+        }
+
+        .topbar {
+            background: white;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .topbar h5 {
+            margin: 0;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+            padding: 18px 25px;
+            font-weight: 600;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .form-control {
+            border: 1.5px solid #dce3f5;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+
+        .form-control:focus {
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+        }
+
+        .form-control:disabled {
+            background: #f8f9fa;
+            color: #888;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 25px;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
