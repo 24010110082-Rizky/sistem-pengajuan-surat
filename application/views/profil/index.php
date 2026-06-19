@@ -319,5 +319,29 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        <?php if ($this->session->flashdata('success')): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '<?= $this->session->flashdata('success') ?>',
+                confirmButtonColor: '#1e3c72',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+
+        <?php if ($this->session->flashdata('error')): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '<?= $this->session->flashdata('error') ?>',
+                confirmButtonColor: '#dc3545',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+    </script>
+
 </body>
 </html>
