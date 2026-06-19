@@ -264,6 +264,57 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-pencil-square me-2"></i>Edit Profil
+                    </div>
+                    <div class="card-body p-4">
+                        <?= form_open('profil/update') ?>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                <input type="text" name="name" class="form-control"
+                                    value="<?= $user->name ?>" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">NIM</label>
+                                <input type="text" class="form-control" value="<?= $user->nim ?>" disabled>
+                                <div class="form-text">NIM tidak dapat diubah.</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-control" value="<?= $user->username ?>" disabled>
+                                <div class="form-text">Username tidak dapat diubah.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control"
+                                    value="<?= $user->email ?>" placeholder="Email kamu">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Password Baru</label>
+                            <input type="password" name="password" class="form-control"
+                                placeholder="Kosongkan jika tidak ingin mengubah password">
+                            <div class="form-text">Minimal 6 karakter.</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check-lg me-2"></i>Simpan Perubahan
+                        </button>
+
+                        <?= form_close() ?>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
