@@ -15,6 +15,7 @@ $route['pengajuan/buat']        = 'Pengajuan/buat';
 $route['pengajuan/simpan']      = 'Pengajuan/simpan';
 $route['pengajuan/riwayat']     = 'Pengajuan/riwayat';
 $route['pengajuan/detail/(:num)'] = 'Pengajuan/detail/$1';
+$route['pengajuan/cetak/(:num)'] = 'Pengajuan/cetak/$1';
 
 $route['admin/pengajuan']               = 'Admin/pengajuan';
 $route['admin/pengajuan/detail/(:num)'] = 'Admin/detail_pengajuan/$1';
