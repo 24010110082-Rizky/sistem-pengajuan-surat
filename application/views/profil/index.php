@@ -229,6 +229,43 @@
                 </div>
             </div>
         </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="profile-info">
+                            <div class="profile-avatar">
+                                <?= strtoupper(substr($user->name, 0, 1)) ?>
+                            </div>
+                            <h5><?= $user->name ?></h5>
+                            <p><?= $user->email ?? 'Email belum diisi' ?></p>
+                            <span class="profile-badge"><i class="bi bi-mortarboard me-1"></i>Mahasiswa</span>
+                        </div>
+                        <div class="p-4">
+                            <div class="mb-3">
+                                <small class="text-muted">NIM</small>
+                                <p class="mb-0 fw-bold"><?= $user->nim ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <small class="text-muted">Username</small>
+                                <p class="mb-0 fw-bold"><?= $user->username ?></p>
+                            </div>
+                            <div class="mb-0">
+                                <small class="text-muted">Status Akun</small>
+                                <p class="mb-0">
+                                    <span style="background:#d1e7dd;color:#0a3622;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;">
+                                        ✅ <?= ucfirst($user->status) ?>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </body>
