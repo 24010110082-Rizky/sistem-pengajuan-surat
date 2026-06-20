@@ -256,7 +256,7 @@
                                 <small class="text-muted">Status Akun</small>
                                 <p class="mb-0">
                                     <span style="background:#d1e7dd;color:#0a3622;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;">
-                                        ✅ <?= ucfirst($user->status) ?>
+                                         <?= ucfirst($user->status) ?>
                                     </span>
                                 </p>
                             </div>
