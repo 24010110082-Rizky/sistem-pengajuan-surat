@@ -172,3 +172,101 @@
         }
     </style>
 </head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-envelope-paper-fill me-2" style="color:#2a5298;"></i>Surat Mahasiswa
+            </a>
+            <a href="<?= site_url('login') ?>" class="btn-login-nav">
+                <i class="bi bi-box-arrow-in-right me-1"></i>Login
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <h1>Sistem Pengajuan <span>Surat Mahasiswa</span></h1>
+                    <p>Ajukan permohonan surat secara online, pantau statusnya, dan dapatkan konfirmasi dari admin kampus dengan mudah dan cepat.</p>
+                    <a href="<?= site_url('login') ?>" class="btn-hero-primary">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Masuk ke Sistem
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:35px;color:white;">
+                        <div class="row g-0 text-center mb-4">
+                            <div class="col-4">
+                                <h3 style="font-size:32px;font-weight:800;color:#f4c430;margin:0;">5+</h3>
+                                <p style="font-size:12px;opacity:0.8;margin:0;">Jenis Surat</p>
+                            </div>
+                            <div class="col-4">
+                                <h3 style="font-size:32px;font-weight:800;color:#f4c430;margin:0;">24/7</h3>
+                                <p style="font-size:12px;opacity:0.8;margin:0;">Bisa Diakses</p>
+                            </div>
+                            <div class="col-4">
+                                <h3 style="font-size:32px;font-weight:800;color:#f4c430;margin:0;">100%</h3>
+                                <p style="font-size:12px;opacity:0.8;margin:0;">Online</p>
+                            </div>
+                        </div>
+                        <hr style="border-color:rgba(255,255,255,0.2);">
+                        <div class="d-flex flex-column gap-3 mt-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-check-circle-fill" style="color:#4ade80;font-size:20px;"></i>
+                                <p style="margin:0;font-size:14px;">Pengajuan surat secara online</p>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-check-circle-fill" style="color:#4ade80;font-size:20px;"></i>
+                                <p style="margin:0;font-size:14px;">Pantau status pengajuan real-time</p>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-check-circle-fill" style="color:#4ade80;font-size:20px;"></i>
+                                <p style="margin:0;font-size:14px;">Riwayat pengajuan tersimpan rapi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Fitur Unggulan</h2>
+            <p class="subtitle">Semua yang kamu butuhkan dalam satu sistem</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-file-earmark-plus"></i></div>
+                        <h5>Pengajuan Online</h5>
+                        <p>Ajukan surat kapan saja tanpa harus datang langsung ke kampus.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-eye"></i></div>
+                        <h5>Pantau Status</h5>
+                        <p>Lihat status pengajuan secara real-time dari menunggu hingga selesai.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-speedometer2"></i></div>
+                        <h5>Dashboard Admin</h5>
+                        <p>Admin dapat mengelola semua pengajuan dengan mudah dan efisien.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Sistem Pengajuan Surat Mahasiswa - Universitas Bumigora</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
