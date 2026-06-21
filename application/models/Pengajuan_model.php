@@ -10,4 +10,14 @@ class Pengajuan_model extends CI_Model
         parent::__construct();
         $this->load->database();
     }
+
+    public function get_by_user($user_id)
+    {
+        $this->db->select('pengajuan.*, jenis_surat.nama_surat');
+        $this->db->from($this->table);
+        $this->db->join('jenis_surat', 'jenis_surat.id = pengajuan.jenis_surat_id');
+        $this->db->where('pengajuan.user_id', $user_id);
+        $this->db->order_by('pengajuan.tanggal_ajuan', 'DESC');
+        return $this->db->get()->result();
+    }
 }
