@@ -66,4 +66,10 @@ class Pengajuan_model extends CI_Model
     {
         return $this->db->count_all($this->table);
     }
+
+    public function update_pengajuan($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update($this->table, $data);
+    }
 }
