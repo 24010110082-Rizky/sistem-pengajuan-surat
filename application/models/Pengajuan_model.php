@@ -40,4 +40,11 @@ class Pengajuan_model extends CI_Model
         $this->db->order_by('pengajuan.tanggal_ajuan', 'DESC');
         return $this->db->get()->result();
     }
+
+    public function tambah($data)
+    {
+        $data['tanggal_ajuan'] = date('Y-m-d H:i:s');
+        $data['status'] = 'menunggu';
+        return $this->db->insert($this->table, $data);
+    }
 }
