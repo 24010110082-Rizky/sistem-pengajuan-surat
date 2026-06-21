@@ -12,6 +12,16 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        if ($this->session->userdata('logged_in')) {
+            $role = $this->session->userdata('role_name');
+            if ($role === 'admin') {
+                redirect('dashboard');
+            } else {
+                redirect('pengajuan');
+            }
+        }
+
+        $data['title'] = 'Selamat Datang - Sistem Pengajuan Surat Mahasiswa';
+        $this->load->view('welcome/index', $data);
 	}
 }
