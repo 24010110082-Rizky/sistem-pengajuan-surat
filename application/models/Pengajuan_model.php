@@ -47,4 +47,13 @@ class Pengajuan_model extends CI_Model
         $data['status'] = 'menunggu';
         return $this->db->insert($this->table, $data);
     }
+
+    public function update_status($id, $data)
+    {
+        if ($data['status'] === 'selesai') {
+            $data['tgl_selesai'] = date('Y-m-d H:i:s');
+        }
+        $this->db->where('id', $id);
+        return $this->db->update($this->table, $data);
+    }
 }
