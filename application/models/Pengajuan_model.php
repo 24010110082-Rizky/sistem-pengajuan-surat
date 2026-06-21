@@ -61,4 +61,9 @@ class Pengajuan_model extends CI_Model
     {
         return $this->db->where('status', $status)->count_all_results($this->table);
     }
+
+    public function count_all()
+    {
+        return $this->db->count_all($this->table);
+    }
 }
