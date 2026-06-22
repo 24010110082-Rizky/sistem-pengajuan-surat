@@ -266,4 +266,172 @@
     </style>
 </head>
 
+<body>
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h5><i class="bi bi-envelope-paper-fill me-2"></i>Surat Mahasiswa</h5>
+            <p>Universitas Bumigora</p>
+        </div>
+        <div class="sidebar-menu">
+            <a href="<?= site_url('pengajuan') ?>" class="active"><i class="bi bi-clock-history"></i> Riwayat Pengajuan</a>
+            <a href="<?= site_url('pengajuan/buat') ?>"><i class="bi bi-plus-circle"></i> Ajukan Surat</a>
+            <a href="<?= site_url('profil') ?>"><i class="bi bi-person-circle"></i> Profil Saya</a>
+            <a href="<?= site_url('logout') ?>"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar">
+            <h5><i class="bi bi-clock-history me-2"></i><?= $title ?></h5>
+            <div class="user-info">
+                <div class="user-avatar"><?= strtoupper(substr($this->session->userdata('name'), 0, 1)) ?></div>
+                <div>
+                    <div style="font-size:14px;font-weight:600;"><?= $this->session->userdata('name') ?></div>
+                    <div style="font-size:12px;color:#888;"><?= $this->session->userdata('nim') ?></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <div class="d-flex gap-2 flex-wrap">
+                <button class="filter-btn active" onclick="filterStatus('semua', this)">Semua</button>
+                <button class="filter-btn" onclick="filterStatus('menunggu', this)">Menunggu</button>
+                <button class="filter-btn" onclick="filterStatus('diproses', this)">Diproses</button>
+                <button class="filter-btn" onclick="filterStatus('selesai', this)">Selesai</button>
+                <button class="filter-btn" onclick="filterStatus('ditolak', this)">Ditolak</button>
+            </div>
+            <input type="text" id="searchInput" class="search-box" placeholder="Cari surat...">
+        </div>
+
+        <div class="card">
+            <div class="card-header" style="display:flex;justify-content:space-between;align-items:center;">
+                <span><i class="bi bi-list-ul me-2"></i>Riwayat Pengajuan Surat Saya</span>
+                <a href="<?= site_url('pengajuan/buat') ?>" class="btn-ajukan">
+                    <i class="bi bi-plus me-1"></i>Ajukan Baru
+                </a>
+            </div>
+            <div class="card-body p-0">
+                <?php if (!empty($pengajuan)): ?>
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0" id="tabelRiwayat">
+                            <thead>
+                                <tr>
+                                    <th class="ps-4">No</th>
+                                    <th>Jenis Surat</th>
+                                    <th>Keperluan</th>
+                                    <th>Tanggal Ajuan</th>
+                                    <th>Status</th>
+                                    <th>Catatan Admin</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1;
+                                foreach ($pengajuan as $p): ?>
+                                    <tr data-status="<?= $p->status ?>">
+                                        <td class="ps-4"><?= $no++ ?></td>
+                                        <td><strong><?= $p->nama_surat ?></strong></td>
+                                        <td style="max-width:200px;"><?= strlen($p->keperluan) > 60 ? substr($p->keperluan, 0, 60) . '...' : $p->keperluan ?></td>
+                                        <td><?= date('d M Y, H:i', strtotime($p->tanggal_ajuan)) ?></td>
+                                        <td>
+                                            <span class="badge-<?= $p->status ?>">
+                                                <?php $label = ['menunggu' => 'Menunggu', 'diproses' => 'Diproses', 'selesai' => 'Selesai', 'ditolak' => 'Ditolak'];
+                                                echo $label[$p->status] ?? ucfirst($p->status); ?>
+                                            </span>
+                                        </td>
+                                        <td style="color:#666;font-size:12px;"><?= $p->catatan_admin ? $p->catatan_admin : '<span style="color:#ccc">-</span>' ?></td>
+                                        <td>
+                                            <?php if ($p->status === 'menunggu'): ?>
+                                                <a href="<?= site_url('pengajuan/edit/' . $p->id) ?>"
+                                                    class="btn btn-sm btn-warning me-1"
+                                                    style="border-radius:8px;font-size:12px;">
+                                                    <i class="bi bi-pencil"></i> Edit
+                                                </a>
+                                                <button class="btn btn-sm btn-danger me-1"
+                                                    style="border-radius:8px;font-size:12px;"
+                                                    onclick="konfirmasiHapus('<?= site_url('pengajuan/hapus/' . $p->id) ?>')">
+                                                    <i class="bi bi-trash"></i> Hapus
+                                                </button>
+                                            <?php endif; ?>
+                                            <?php if ($p->status === 'selesai'): ?>
+                                                <a href="<?= site_url('pengajuan/cetak/' . $p->id) ?>"
+                                                    target="_blank"
+                                                    class="btn btn-sm btn-outline-primary"
+                                                    style="border-radius:8px;font-size:12px;">
+                                                    <i class="bi bi-printer"></i> Cetak
+                                                </a>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else: ?>
+                    <div class="empty-state">
+                        <i class="bi bi-inbox"></i>
+                        <h6 style="color:#888;">Belum ada pengajuan surat</h6>
+                        <p style="font-size:13px;">Klik tombol <strong>Ajukan Baru</strong> untuk membuat pengajuan pertama kamu.</p>
+                        <a href="<?= site_url('pengajuan/buat') ?>" class="btn btn-primary btn-sm"><i class="bi bi-plus me-1"></i>Ajukan Sekarang</a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function filterStatus(status, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.className = 'filter-btn');
+            btn.className = status === 'semua' ? 'filter-btn active' : 'filter-btn active-' + status;
+            document.querySelectorAll('#tabelRiwayat tbody tr').forEach(row => {
+                row.style.display = (status === 'semua' || row.dataset.status === status) ? '' : 'none';
+            });
+        }
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const keyword = this.value.toLowerCase();
+            document.querySelectorAll('#tabelRiwayat tbody tr').forEach(row => {
+                row.style.display = row.textContent.toLowerCase().includes(keyword) ? '' : 'none';
+            });
+        });
+
+        function konfirmasiHapus(url) {
+            Swal.fire({
+                title: 'Hapus pengajuan ini?',
+                text: 'Data yang sudah dihapus tidak bisa dikembalikan.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Ya, hapus',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        }
+
+        <?php if ($this->session->flashdata('success')): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '<?= $this->session->flashdata('success') ?>',
+                confirmButtonColor: '#1e3c72',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+        <?php if ($this->session->flashdata('error')): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '<?= $this->session->flashdata('error') ?>',
+                confirmButtonColor: '#dc3545',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+    </script>
+</body>
+
 </html>
