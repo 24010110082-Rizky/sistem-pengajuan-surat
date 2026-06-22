@@ -32,4 +32,29 @@ class Pengajuan extends CI_Controller
         $data['jenis_surat'] = $this->Jenis_surat_model->get_all_aktif();
         $this->load->view('pengajuan/form', $data);
     }
+
+    public function simpan()
+    {
+        $this->form_validation->set_rules('jenis_surat_id', 'Jenis Surat', 'required');
+        $this->form_validation->set_rules('keperluan', 'Keperluan', 'required|min_length[10]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', validation_errors());
+            redirect('pengajuan/buat');
+        }
+
+        $data = [
+            'user_id'       => $this->session->userdata('user_id'),
+            'jenis_surat_id' => $this->input->post('jenis_surat_id'),
+            'keperluan'     => $this->input->post('keperluan'),
+        ];
+
+        if ($this->Pengajuan_model->tambah($data)) {
+            $this->session->set_flashdata('success', 'Pengajuan surat berhasil dikirim! Silakan tunggu konfirmasi dari admin.');
+            redirect('pengajuan');
+        } else {
+            $this->session->set_flashdata('error', 'Gagal mengirim pengajuan, silakan coba lagi.');
+            redirect('pengajuan/buat');
+        }
+    }
 }
