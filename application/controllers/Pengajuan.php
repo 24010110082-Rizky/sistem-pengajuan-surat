@@ -25,4 +25,11 @@ class Pengajuan extends CI_Controller
         $data['pengajuan']  = $this->Pengajuan_model->get_by_user($user_id);
         $this->load->view('pengajuan/riwayat', $data);
     }
+
+    public function buat()
+    {
+        $data['title']       = 'Ajukan Surat Baru';
+        $data['jenis_surat'] = $this->Jenis_surat_model->get_all_aktif();
+        $this->load->view('pengajuan/form', $data);
+    }
 }
