@@ -69,4 +69,21 @@ class Pengajuan extends CI_Controller
 
         $this->load->view('pengajuan/detail', $data);
     }
+
+    public function riwayat()
+    {
+        $this->index();
+    }
+
+    public function cetak($id)
+    {
+        $data['title'] = 'Cetak Bukti Pengajuan';
+        $data['pengajuan'] = $this->Pengajuan_model->get_by_id($id);
+
+        if (!$data['pengajuan']) {
+            show_404();
+        }
+
+        $this->load->view('pengajuan/cetak', $data);
+    }
 }
