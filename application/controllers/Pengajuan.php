@@ -17,4 +17,12 @@ class Pengajuan extends CI_Controller
             redirect('dashboard');
         }
     }
+
+    public function index()
+    {
+        $user_id = $this->session->userdata('user_id');
+        $data['title']      = 'Riwayat Pengajuan Surat';
+        $data['pengajuan']  = $this->Pengajuan_model->get_by_user($user_id);
+        $this->load->view('pengajuan/riwayat', $data);
+    }
 }
