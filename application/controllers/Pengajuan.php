@@ -86,4 +86,23 @@ class Pengajuan extends CI_Controller
 
         $this->load->view('pengajuan/cetak', $data);
     }
+
+    public function edit($id)
+    {
+        $user_id = $this->session->userdata('user_id');
+        $data['title'] = 'Edit Pengajuan Surat';
+        $data['pengajuan'] = $this->Pengajuan_model->get_by_id($id);
+        $data['jenis_surat'] = $this->Jenis_surat_model->get_all_aktif();
+
+        if (!$data['pengajuan'] || $data['pengajuan']->user_id != $user_id) {
+            show_404();
+        }
+
+        if ($data['pengajuan']->status !== 'menunggu') {
+            $this->session->set_flashdata('error', 'Pengajuan tidak dapat diedit karena sudah diproses!');
+            redirect('pengajuan');
+        }
+
+        $this->load->view('pengajuan/edit', $data);
+    }
 }
