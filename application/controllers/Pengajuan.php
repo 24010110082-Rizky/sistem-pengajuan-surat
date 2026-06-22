@@ -105,4 +105,39 @@ class Pengajuan extends CI_Controller
 
         $this->load->view('pengajuan/edit', $data);
     }
+
+    public function update($id)
+    {
+        $user_id = $this->session->userdata('user_id');
+        $pengajuan = $this->Pengajuan_model->get_by_id($id);
+
+        if (!$pengajuan || $pengajuan->user_id != $user_id) {
+            show_404();
+        }
+
+        if ($pengajuan->status !== 'menunggu') {
+            $this->session->set_flashdata('error', 'Pengajuan tidak dapat diubah karena sudah diproses!');
+            redirect('pengajuan');
+        }
+
+        $this->form_validation->set_rules('jenis_surat_id', 'Jenis Surat', 'required');
+        $this->form_validation->set_rules('keperluan', 'Keperluan', 'required|min_length[10]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', validation_errors());
+            redirect('pengajuan/edit/' . $id);
+        }
+
+        $data = [
+            'jenis_surat_id' => $this->input->post('jenis_surat_id'),
+            'keperluan' => $this->input->post('keperluan'),
+        ];
+
+        if ($this->Pengajuan_model->update_pengajuan($id, $data)) {
+            $this->session->set_flashdata('success', 'Pengajuan berhasil diperbarui!');
+        } else {
+            $this->session->set_flashdata('error', 'Gagal memperbarui pengajuan!');
+        }
+        redirect('pengajuan');
+    }
 }
