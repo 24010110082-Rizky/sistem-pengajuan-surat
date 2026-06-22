@@ -140,4 +140,26 @@ class Pengajuan extends CI_Controller
         }
         redirect('pengajuan');
     }
+
+    public function hapus($id)
+    {
+        $user_id = $this->session->userdata('user_id');
+        $pengajuan = $this->Pengajuan_model->get_by_id($id);
+
+        if (!$pengajuan || $pengajuan->user_id != $user_id) {
+            show_404();
+        }
+
+        if ($pengajuan->status !== 'menunggu') {
+            $this->session->set_flashdata('error', 'Pengajuan tidak dapat dihapus karena sudah diproses!');
+            redirect('pengajuan');
+        }
+
+        if ($this->Pengajuan_model->hapus($id)) {
+            $this->session->set_flashdata('success', 'Pengajuan berhasil dihapus!');
+        } else {
+            $this->session->set_flashdata('error', 'Gagal menghapus pengajuan!');
+        }
+        redirect('pengajuan');
+    }
 }
