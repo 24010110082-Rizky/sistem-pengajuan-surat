@@ -21,14 +21,14 @@ class Pengajuan extends CI_Controller
     public function index()
     {
         $user_id = $this->session->userdata('user_id');
-        $data['title']      = 'Riwayat Pengajuan Surat';
-        $data['pengajuan']  = $this->Pengajuan_model->get_by_user($user_id);
+        $data['title'] = 'Riwayat Pengajuan Surat';
+        $data['pengajuan'] = $this->Pengajuan_model->get_by_user($user_id);
         $this->load->view('pengajuan/riwayat', $data);
     }
 
     public function buat()
     {
-        $data['title']       = 'Ajukan Surat Baru';
+        $data['title'] = 'Ajukan Surat Baru';
         $data['jenis_surat'] = $this->Jenis_surat_model->get_all_aktif();
         $this->load->view('pengajuan/form', $data);
     }
@@ -44,9 +44,9 @@ class Pengajuan extends CI_Controller
         }
 
         $data = [
-            'user_id'       => $this->session->userdata('user_id'),
+            'user_id' => $this->session->userdata('user_id'),
             'jenis_surat_id' => $this->input->post('jenis_surat_id'),
-            'keperluan'     => $this->input->post('keperluan'),
+            'keperluan' => $this->input->post('keperluan'),
         ];
 
         if ($this->Pengajuan_model->tambah($data)) {
@@ -56,5 +56,17 @@ class Pengajuan extends CI_Controller
             $this->session->set_flashdata('error', 'Gagal mengirim pengajuan, silakan coba lagi.');
             redirect('pengajuan/buat');
         }
+    }
+
+    public function detail($id)
+    {
+        $data['title'] = 'Detail Pengajuan';
+        $data['pengajuan'] = $this->Pengajuan_model->get_by_id($id);
+
+        if (!$data['pengajuan']) {
+            show_404();
+        }
+
+        $this->load->view('pengajuan/detail', $data);
     }
 }
