@@ -307,3 +307,74 @@
                 </div>
             </div>
         </div>
+
+        <!-- Tabel Pengajuan Terbaru -->
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-clock-history me-2"></i>Pengajuan Terbaru
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">No</th>
+                                <th>Nama Mahasiswa</th>
+                                <th>NIM</th>
+                                <th>Jenis Surat</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($pengajuan_baru)): $no = 1;
+                                foreach ($pengajuan_baru as $p): ?>
+                                    <tr>
+                                        <td class="ps-4"><?= $no++ ?></td>
+                                        <td><strong><?= $p->nama_mahasiswa ?></strong></td>
+                                        <td><?= $p->nim ?></td>
+                                        <td><?= $p->nama_surat ?></td>
+                                        <td><?= date('d M Y', strtotime($p->tanggal_ajuan)) ?></td>
+                                        <td>
+                                            <span class="badge-<?= $p->status ?>">
+                                                <?php $label = ['menunggu' => '⏳ Menunggu', 'diproses' => '🔄 Diproses', 'selesai' => '✅ Selesai', 'ditolak' => '❌ Ditolak'];
+                                                echo $label[$p->status] ?? ucfirst($p->status); ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a href="<?= site_url('admin/pengajuan') ?>" class="btn btn-sm btn-outline-primary" style="border-radius:8px;font-size:12px;">
+                                                <i class="bi bi-eye"></i> Detail
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach;
+                            else: ?>
+                                <tr>
+                                    <td colspan="7" class="text-center py-4 text-muted">Belum ada pengajuan masuk.</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <?php if ($this->session->flashdata('success')): ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '<?= $this->session->flashdata('success') ?>',
+                confirmButtonColor: '#1e3c72',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    <?php endif; ?>
+</body>
+
+</html>
