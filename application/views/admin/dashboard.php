@@ -230,3 +230,33 @@
         }
     </style>
 </head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h5><i class="bi bi-envelope-paper-fill me-2"></i>Surat Mahasiswa</h5>
+            <p>Panel Admin - Universitas Bumigora</p>
+        </div>
+        <div class="sidebar-menu">
+            <div class="menu-label">Menu Utama</div>
+            <a href="<?= site_url('dashboard') ?>" class="active"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="<?= site_url('admin/pengajuan') ?>">
+                <i class="bi bi-file-earmark-text"></i> Kelola Pengajuan
+                <?php
+                $CI = &get_instance();
+                $CI->load->model('Pengajuan_model');
+                $menunggu_badge = $CI->Pengajuan_model->count_by_status('menunggu');
+                if ($menunggu_badge > 0):
+                ?>
+                    <span style="background:#dc3545;color:white;border-radius:50%;width:20px;height:20px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-left:auto;"><?= $menunggu_badge ?></span>
+                <?php endif; ?>
+            </a>
+            <div class="menu-label">Master Data</div>
+            <a href="<?= site_url('admin/jenis-surat') ?>"><i class="bi bi-tags"></i> Jenis Surat</a>
+            <a href="<?= site_url('admin/mahasiswa') ?>"><i class="bi bi-people"></i> Data Mahasiswa</a>
+            <div class="menu-label">Akun</div>
+            <a href="<?= site_url('logout') ?>"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </div>
+    </div>
