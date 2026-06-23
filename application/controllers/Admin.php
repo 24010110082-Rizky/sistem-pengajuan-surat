@@ -10,6 +10,7 @@ class Admin extends CI_Controller {
         $this->load->library(['session', 'form_validation']);
         $this->load->helper(['url', 'form']);
 
+        // Cek login & role admin
         if (!$this->session->userdata('logged_in')) {
             redirect('login');
         }
@@ -18,6 +19,7 @@ class Admin extends CI_Controller {
         }
     }
 
+    // - KELOLA PENGAJUAN -
     public function pengajuan()
     {
         $data['title']     = 'Kelola Pengajuan';
@@ -47,6 +49,7 @@ class Admin extends CI_Controller {
         redirect('admin/pengajuan');
     }
 
+    // - KELOLA JENIS SURAT -
     public function jenis_surat()
     {
         $data['title']       = 'Kelola Jenis Surat';
@@ -110,6 +113,7 @@ class Admin extends CI_Controller {
         redirect('admin/jenis-surat');
     }
 
+    // - KELOLA MAHASISWA -
     public function mahasiswa()
     {
         $data['title']     = 'Kelola Data Mahasiswa';
