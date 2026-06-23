@@ -289,8 +289,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Username</label>
-                                <input type="text" class="form-control" value="<?= $user->username ?>" disabled>
-                                <div class="form-text">Username tidak dapat diubah.</div>
+                                <input type="text" name="username" class="form-control" value="<?= $user->username ?>">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Email</label>
