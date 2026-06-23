@@ -162,4 +162,87 @@
     </style>
 </head>
 
+<body>
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h5><i class="bi bi-envelope-paper-fill me-2"></i>Surat Mahasiswa</h5>
+            <p>Universitas Bumigora</p>
+        </div>
+        <div class="sidebar-menu">
+            <a href="<?= site_url('pengajuan') ?>" class="active"><i class="bi bi-clock-history"></i> Riwayat Pengajuan</a>
+            <a href="<?= site_url('pengajuan/buat') ?>"><i class="bi bi-plus-circle"></i> Ajukan Surat</a>
+            <a href="<?= site_url('profil') ?>"><i class="bi bi-person-circle"></i> Profil Saya</a>
+            <a href="<?= site_url('logout') ?>"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar">
+            <h5><i class="bi bi-pencil-square me-2"></i><?= $title ?></h5>
+            <div class="user-info">
+                <div class="user-avatar"><?= strtoupper(substr($this->session->userdata('name'), 0, 1)) ?></div>
+                <div>
+                    <div style="font-size:14px;font-weight:600;"><?= $this->session->userdata('name') ?></div>
+                    <div style="font-size:12px;color:#888;"><?= $this->session->userdata('nim') ?></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-pencil-square me-2"></i>Edit Pengajuan Surat
+            </div>
+            <div class="card-body p-4">
+                <?= form_open('pengajuan/update/' . $pengajuan->id) ?>
+                <div class="mb-4">
+                    <label class="form-label">Jenis Surat <span class="text-danger">*</span></label>
+                    <select name="jenis_surat_id" class="form-select" required>
+                        <option value="">-- Pilih Jenis Surat --</option>
+                        <?php foreach ($jenis_surat as $js): ?>
+                            <option value="<?= $js->id ?>" <?= $pengajuan->jenis_surat_id == $js->id ? 'selected' : '' ?>>
+                                <?= $js->nama_surat ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Keperluan / Tujuan Surat <span class="text-danger">*</span></label>
+                    <textarea name="keperluan"
+                        class="form-control"
+                        rows="5"
+                        placeholder="Jelaskan keperluan atau tujuan pengajuan surat ini secara lengkap..."
+                        required><?= $pengajuan->keperluan ?></textarea>
+                    <div class="form-text">Minimal 10 karakter.</div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-check-lg me-2"></i>Simpan Perubahan
+                    </button>
+                    <a href="<?= site_url('pengajuan') ?>" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>Batal
+                    </a>
+                </div>
+
+                <?= form_close() ?>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        <?php if ($this->session->flashdata('error')): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '<?= $this->session->flashdata('error') ?>',
+                confirmButtonColor: '#dc3545',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+    </script>
+</body>
+
 </html>
