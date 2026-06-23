@@ -260,3 +260,18 @@
             <a href="<?= site_url('logout') ?>"><i class="bi bi-box-arrow-right"></i> Logout</a>
         </div>
     </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Topbar -->
+        <div class="topbar">
+            <h5><i class="bi bi-speedometer2 me-2"></i>Dashboard Admin</h5>
+            <div class="user-info">
+                <div class="user-avatar"><?= strtoupper(substr($this->session->userdata('name'), 0, 1)) ?></div>
+                <div>
+                    <div style="font-size:14px;font-weight:600;"><?= $this->session->userdata('name') ?></div>
+                    <div style="font-size:12px;color:#888;">Administrator</div>
+                </div>
+            </div>
+        </div>
