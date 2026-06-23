@@ -275,3 +275,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- Stat Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="stat-card bg-total">
+                    <i class="bi bi-collection stat-icon"></i>
+                    <h2><?= $total ?></h2>
+                    <p>Total Pengajuan</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card bg-menunggu">
+                    <i class="bi bi-hourglass-split stat-icon"></i>
+                    <h2><?= $menunggu ?></h2>
+                    <p>Menunggu Proses</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card bg-diproses">
+                    <i class="bi bi-arrow-repeat stat-icon"></i>
+                    <h2><?= $diproses ?></h2>
+                    <p>Sedang Diproses</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card bg-selesai">
+                    <i class="bi bi-check-circle stat-icon"></i>
+                    <h2><?= $selesai ?></h2>
+                    <p>Selesai</p>
+                </div>
+            </div>
+        </div>
