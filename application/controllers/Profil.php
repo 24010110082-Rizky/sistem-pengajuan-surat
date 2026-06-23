@@ -42,6 +42,7 @@ class Profil extends CI_Controller {
             'name'     => $this->input->post('name'),
             'email'    => $this->input->post('email'),
             'password' => $this->input->post('password'),
+            'username' => $this->input->post('username'),
         ];
 
         if ($this->User_model->update_profil($user_id, $data)) {
