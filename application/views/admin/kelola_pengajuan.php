@@ -299,3 +299,87 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalUpdate" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-pencil me-2"></i>Update Status Pengajuan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <?= form_open('', ['id' => 'formUpdate']) ?>
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Mahasiswa</label>
+                        <p id="modalNama" class="mb-0"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Jenis Surat</label>
+                        <p id="modalSurat" class="mb-0"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Status <span class="text-danger">*</span></label>
+                        <select name="status" class="form-select" required>
+                            <option value="menunggu">Menunggu</option>
+                            <option value="diproses">Diproses</option>
+                            <option value="selesai">Selesai</option>
+                            <option value="ditolak">Ditolak</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Catatan Admin</label>
+                        <textarea name="catatan_admin" class="form-control" rows="3" id="modalCatatan" placeholder="Tambahkan catatan..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Simpan</button>
+                </div>
+                <?= form_close() ?>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('modalUpdate').addEventListener('show.bs.modal', function(e) {
+            const btn = e.relatedTarget;
+            document.getElementById('modalNama').textContent = btn.dataset.nama;
+            document.getElementById('modalSurat').textContent = btn.dataset.surat;
+            document.getElementById('modalCatatan').value = btn.dataset.catatan;
+            document.querySelector('#modalUpdate select[name=status]').value = btn.dataset.status;
+            document.getElementById('formUpdate').action = '<?= site_url('admin/pengajuan/update/') ?>' + btn.dataset.id;
+        });
+
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const keyword = this.value.toLowerCase();
+            document.querySelectorAll('#tablePengajuan tbody tr').forEach(row => {
+                row.style.display = row.textContent.toLowerCase().includes(keyword) ? '' : 'none';
+            });
+        });
+
+        <?php if ($this->session->flashdata('success')): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '<?= $this->session->flashdata('success') ?>',
+                confirmButtonColor: '#1e3c72',
+                confirmButtonText: 'OK',
+                borderRadius: '15px'
+            });
+        <?php endif; ?>
+
+        <?php if ($this->session->flashdata('error')): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '<?= $this->session->flashdata('error') ?>',
+                confirmButtonColor: '#dc3545',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+    </script>
+</body>
+
+</html>
