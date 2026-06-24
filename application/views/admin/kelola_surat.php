@@ -207,3 +207,22 @@
         }
     </style>
 </head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h5><i class="bi bi-envelope-paper-fill me-2"></i>Surat Mahasiswa</h5>
+            <p>Panel Admin - Universitas Bumigora</p>
+        </div>
+        <div class="sidebar-menu">
+            <div class="menu-label">Menu Utama</div>
+            <a href="<?= site_url('dashboard') ?>"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="<?= site_url('admin/pengajuan') ?>"><i class="bi bi-file-earmark-text"></i> Kelola Pengajuan</a>
+            <div class="menu-label">Master Data</div>
+            <a href="<?= site_url('admin/jenis-surat') ?>" class="active"><i class="bi bi-tags"></i> Jenis Surat</a>
+            <a href="<?= site_url('admin/mahasiswa') ?>"><i class="bi bi-people"></i> Data Mahasiswa</a>
+            <div class="menu-label">Akun</div>
+            <a href="<?= site_url('logout') ?>"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </div>
+    </div>
