@@ -241,7 +241,7 @@
     <div class="main-content">
         <div class="topbar">
             <h5><i class="bi bi-file-earmark-text me-2"></i><?= $title ?></h5>
-            <input type="text" id="searchInput" class="search-box" placeholder="🔍 Cari nama / jenis surat...">
+            <input type="text" id="searchInput" class="search-box" placeholder="Cari nama / jenis surat...">
         </div>
 
         <div class="card">
@@ -271,7 +271,7 @@
                                         <td><?= date('d M Y', strtotime($p->tanggal_ajuan)) ?></td>
                                         <td>
                                             <span class="badge-<?= $p->status ?>">
-                                                <?php $label = ['menunggu' => '⏳ Menunggu', 'diproses' => '🔄 Diproses', 'selesai' => '✅ Selesai', 'ditolak' => '❌ Ditolak'];
+                                                <?php $label = ['menunggu' => 'Menunggu', 'diproses' => 'Diproses', 'selesai' => 'Selesai', 'ditolak' => 'Ditolak'];
                                                 echo $label[$p->status] ?? ucfirst($p->status); ?>
                                             </span>
                                         </td>

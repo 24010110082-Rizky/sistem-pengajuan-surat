@@ -230,7 +230,7 @@
     <div class="main-content">
         <div class="topbar">
             <h5><i class="bi bi-tags me-2"></i><?= $title ?></h5>
-            <input type="text" id="searchInput" class="search-box" placeholder="🔍 Cari jenis surat...">
+            <input type="text" id="searchInput" class="search-box" placeholder="Cari jenis surat...">
         </div>
 
         <div class="card">

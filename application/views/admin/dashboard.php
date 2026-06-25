@@ -338,7 +338,7 @@
                                         <td><?= date('d M Y', strtotime($p->tanggal_ajuan)) ?></td>
                                         <td>
                                             <span class="badge-<?= $p->status ?>">
-                                                <?php $label = ['menunggu' => '⏳ Menunggu', 'diproses' => '🔄 Diproses', 'selesai' => '✅ Selesai', 'ditolak' => '❌ Ditolak'];
+                                                <?php $label = ['menunggu' => 'Menunggu', 'diproses' => 'Diproses', 'selesai' => 'Selesai', 'ditolak' => 'Ditolak'];
                                                 echo $label[$p->status] ?? ucfirst($p->status); ?>
                                             </span>
                                         </td>
