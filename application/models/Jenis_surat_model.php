@@ -35,7 +35,7 @@ class Jenis_surat_model extends CI_Model {
         return $this->db->insert($this->table, $data);
     }
 
-    // Tambah jenis surat
+    // Update jenis surat
     public function update($id, $data)
     {
         $this->db->where('id', $id);
