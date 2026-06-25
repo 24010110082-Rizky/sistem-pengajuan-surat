@@ -290,3 +290,141 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalTambah" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-person-plus me-2"></i>Tambah Mahasiswa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <?= form_open('admin/mahasiswa/simpan') ?>
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Nama Lengkap <span class="text-danger">*</span></label>
+                        <input type="text" name="name" class="form-control" placeholder="Nama lengkap mahasiswa" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">NIM <span class="text-danger">*</span></label>
+                        <input type="text" name="nim" class="form-control" placeholder="Nomor Induk Mahasiswa" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Username <span class="text-danger">*</span></label>
+                        <input type="text" name="username" class="form-control" placeholder="Username untuk login" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Password <span class="text-danger">*</span></label>
+                        <input type="password" name="password" class="form-control" placeholder="Minimal 6 karakter" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email mahasiswa (opsional)">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Simpan</button>
+                </div>
+                <?= form_close() ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEdit" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-pencil me-2"></i>Edit Data Mahasiswa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <?= form_open('', ['id' => 'formEdit']) ?>
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Nama Lengkap <span class="text-danger">*</span></label>
+                        <input type="text" name="name" id="editName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">NIM <span class="text-danger">*</span></label>
+                        <input type="text" name="nim" id="editNim" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Username <span class="text-danger">*</span></label>
+                        <input type="text" name="username" id="editUsername" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Password Baru</label>
+                        <input type="password" name="password" class="form-control" placeholder="Kosongkan jika tidak ingin mengubah">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Email</label>
+                        <input type="email" name="email" id="editEmail" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Update</button>
+                </div>
+                <?= form_close() ?>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('modalEdit').addEventListener('show.bs.modal', function(e) {
+            const btn = e.relatedTarget;
+            document.getElementById('editName').value = btn.dataset.name;
+            document.getElementById('editNim').value = btn.dataset.nim;
+            document.getElementById('editUsername').value = btn.dataset.username;
+            document.getElementById('editEmail').value = btn.dataset.email;
+            document.getElementById('formEdit').action = '<?= site_url('admin/mahasiswa/edit/') ?>' + btn.dataset.id;
+        });
+
+       document.getElementById('searchInput').addEventListener('keyup', function() {
+            const keyword = this.value.toLowerCase();
+            document.querySelectorAll('#tableMahasiswa tbody tr').forEach(row => {
+                row.style.display = row.textContent.toLowerCase().includes(keyword) ? '' : 'none';
+            });
+        });
+
+        function konfirmasiHapus(url, nama) {
+            Swal.fire({
+                title: 'Hapus data ini?',
+                text: 'Data yang sudah dihapus tidak bisa dikembalikan.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Ya, hapus',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        }
+
+        <?php if ($this->session->flashdata('success')): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '<?= $this->session->flashdata('success') ?>',
+                confirmButtonColor: '#1e3c72',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+
+        <?php if ($this->session->flashdata('error')): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '<?= $this->session->flashdata('error') ?>',
+                confirmButtonColor: '#dc3545',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+    </script>
+</body>
+
+</html>
