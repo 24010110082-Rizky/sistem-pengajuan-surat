@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,8 +203,9 @@
         }
     </style>
 </head>
+
 <body>
-    
+
     <div class="sidebar">
         <div class="sidebar-brand">
             <h5><i class="bi bi-envelope-paper-fill me-2"></i>Surat Mahasiswa</h5>
@@ -256,7 +258,7 @@
                                 <small class="text-muted">Status Akun</small>
                                 <p class="mb-0">
                                     <span style="background:#d1e7dd;color:#0a3622;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;">
-                                         <?= ucfirst($user->status) ?>
+                                        <?= ucfirst($user->status) ?>
                                     </span>
                                 </p>
                             </div>
@@ -300,8 +302,13 @@
 
                         <div class="mb-4">
                             <label class="form-label">Password Baru</label>
-                            <input type="password" name="password" class="form-control"
-                                placeholder="Kosongkan jika tidak ingin mengubah password">
+                            <div class="input-group">
+                                <input type="password" name="password" id="passwordBaru" class="form-control"
+                                    placeholder="Kosongkan jika tidak ingin mengubah password">
+                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">
+                                    <i class="bi bi-eye" id="iconMata"></i>
+                                </button>
+                            </div>
                             <div class="form-text">Minimal 6 karakter.</div>
                         </div>
 
@@ -343,4 +350,5 @@
     </script>
 
 </body>
+
 </html>
