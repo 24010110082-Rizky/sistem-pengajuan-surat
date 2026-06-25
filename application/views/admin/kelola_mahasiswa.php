@@ -205,3 +205,88 @@
         }
     </style>
 </head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h5><i class="bi bi-envelope-paper-fill me-2"></i>Surat Mahasiswa</h5>
+            <p>Panel Admin - Universitas Bumigora</p>
+        </div>
+        <div class="sidebar-menu">
+            <div class="menu-label">Menu Utama</div>
+            <a href="<?= site_url('dashboard') ?>"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="<?= site_url('admin/pengajuan') ?>"><i class="bi bi-file-earmark-text"></i> Kelola Pengajuan</a>
+            <div class="menu-label">Master Data</div>
+            <a href="<?= site_url('admin/jenis-surat') ?>"><i class="bi bi-tags"></i> Jenis Surat</a>
+            <a href="<?= site_url('admin/mahasiswa') ?>" class="active"><i class="bi bi-people"></i> Data Mahasiswa</a>
+            <div class="menu-label">Akun</div>
+            <a href="<?= site_url('logout') ?>"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar">
+            <h5><i class="bi bi-people me-2"></i><?= $title ?></h5>
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 Cari nama / NIM...">
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span><i class="bi bi-people me-2"></i>Daftar Data Mahasiswa</span>
+                <button class="btn-tambah" data-bs-toggle="modal" data-bs-target="#modalTambah">
+                    <i class="bi bi-plus me-1"></i>Tambah Mahasiswa
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="tableMahasiswa">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">No</th>
+                                <th>Nama</th>
+                                <th>NIM</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($mahasiswa)): $no = 1;
+                                foreach ($mahasiswa as $m): ?>
+                                    <tr>
+                                        <td class="ps-4"><?= $no++ ?></td>
+                                        <td><strong><?= $m->name ?></strong></td>
+                                        <td><?= $m->nim ?></td>
+                                        <td><?= $m->username ?></td>
+                                        <td><?= $m->email ?? '-' ?></td>
+                                        <td><span class="badge-<?= $m->status ?>"><?= ucfirst($m->status) ?></span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning me-1" style="border-radius:8px;font-size:12px;"
+                                                data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                                data-id="<?= $m->id ?>"
+                                                data-name="<?= $m->name ?>"
+                                                data-nim="<?= $m->nim ?>"
+                                                data-username="<?= $m->username ?>"
+                                                data-email="<?= $m->email ?>">
+                                                <i class="bi bi-pencil"></i> Edit
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" style="border-radius:8px;font-size:12px;"
+                                                onclick="konfirmasiHapus('<?= site_url('admin/mahasiswa/hapus/' . $m->id) ?>', 'mahasiswa ini')">
+                                                <i class="bi bi-trash"></i> Hapus
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach;
+                            else: ?>
+                                <tr>
+                                    <td colspan="7" class="text-center py-4 text-muted">Belum ada data mahasiswa.</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
