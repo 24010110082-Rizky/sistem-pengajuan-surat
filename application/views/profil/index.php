@@ -349,6 +349,21 @@
         <?php endif; ?>
     </script>
 
+    <script>
+        function togglePassword() {
+            const input = document.getElementById('passwordBaru');
+            const icon = document.getElementById('iconMata');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'bi bi-eye-slash';
+            } else {
+                input.type = 'password';
+                icon.className = 'bi bi-eye';
+            }
+        }
+    </script>
+
+
 </body>
 
 </html>
