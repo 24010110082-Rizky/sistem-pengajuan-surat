@@ -227,6 +227,67 @@
         </div>
     </div>
 
+    <div class="main-content">
+        <div class="topbar">
+            <h5><i class="bi bi-tags me-2"></i><?= $title ?></h5>
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 Cari jenis surat...">
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span><i class="bi bi-tags me-2"></i>Daftar Jenis Surat</span>
+                <button class="btn-tambah" data-bs-toggle="modal" data-bs-target="#modalTambah">
+                    <i class="bi bi-plus me-1"></i>Tambah Jenis Surat
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="tableSurat">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">No</th>
+                                <th>Nama Surat</th>
+                                <th>Deskripsi</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($jenis_surat)): $no = 1;
+                                foreach ($jenis_surat as $js): ?>
+                                    <tr>
+                                        <td class="ps-4"><?= $no++ ?></td>
+                                        <td><strong><?= $js->nama_surat ?></strong></td>
+                                        <td style="font-size:12px;color:#666;"><?= $js->deskripsi ?? '-' ?></td>
+                                        <td><span class="badge-<?= $js->status ?>"><?= ucfirst($js->status) ?></span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning me-1" style="border-radius:8px;font-size:12px;"
+                                                data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                                data-id="<?= $js->id ?>"
+                                                data-nama="<?= $js->nama_surat ?>"
+                                                data-deskripsi="<?= $js->deskripsi ?>"
+                                                data-status="<?= $js->status ?>">
+                                                <i class="bi bi-pencil"></i> Edit
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" style="border-radius:8px;font-size:12px;"
+                                                onclick="konfirmasiHapus('<?= site_url('admin/jenis-surat/hapus/' . $js->id) ?>', 'jenis surat ini')">
+                                                <i class="bi bi-trash"></i> Hapus
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach;
+                            else: ?>
+                                <tr>
+                                    <td colspan="5" class="text-center py-4 text-muted">Belum ada jenis surat.</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="modalTambah" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
