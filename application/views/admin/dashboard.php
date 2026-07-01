@@ -322,6 +322,7 @@
                                 <th>Nama Mahasiswa</th>
                                 <th>NIM</th>
                                 <th>Jenis Surat</th>
+                                <th>Keperluan</th>
                                 <th>Tanggal</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
@@ -335,6 +336,7 @@
                                         <td><strong><?= $p->nama_mahasiswa ?></strong></td>
                                         <td><?= $p->nim ?></td>
                                         <td><?= $p->nama_surat ?></td>
+                                        <td><?= $p->keperluan ?></td>
                                         <td><?= date('d M Y', strtotime($p->tanggal_ajuan)) ?></td>
                                         <td>
                                             <span class="badge-<?= $p->status ?>">
