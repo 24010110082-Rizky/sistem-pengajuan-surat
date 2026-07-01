@@ -228,7 +228,7 @@
     <div class="main-content">
         <div class="topbar">
             <h5><i class="bi bi-people me-2"></i><?= $title ?></h5>
-            <input type="text" id="searchInput" class="search-box" placeholder="🔍 Cari nama / NIM...">
+            <input type="text" id="searchInput" class="search-box" placeholder="Cari nama / NIM...">
         </div>
 
         <div class="card">
