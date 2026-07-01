@@ -198,7 +198,7 @@
                 <div class="mb-4">
                     <label class="form-label">Jenis Surat <span class="text-danger">*</span></label>
                     <select name="jenis_surat_id" class="form-select" required>
-                        <option value="">-- Pilih Jenis Surat --</option>
+                        <option value="" disabled hidden selected>-- Pilih Jenis Surat --</option>
                         <?php foreach ($jenis_surat as $js): ?>
                             <option value="<?= $js->id ?>" <?= set_select('jenis_surat_id', $js->id) ?>>
                                 <?= $js->nama_surat ?>
